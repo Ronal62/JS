@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html style="transition: 4s linear; color: #101010; ">
+  <link rel="stylesheet" href="quiz.css">
+  <span style="text-decoration: none; font-size: 2rem; border:3px solid #101010; border-radius: 0.5rem;">SILAHKAN DOWNLOAD GAME INI GRATIS SEKARANG JUGA |<a href="https://google.play.store.com"  style="text-decoration: none; font-size: 2rem; color: red; "> Click Disini</a></span>
+  <body style="margin-left: 4rem; margin-top: 3rem;  border-radius: 0.5rem;">
+    <div id="quiz-container"></div>
+
+
+    <script>
+      // Data pertanyaan
+      const questions = [
+        {
+          question: "Siapakah presiden Indonesia pertama?",
+          options: ["Soekarno", "Habibie", "Gus Dur", "Megawati"],
+          answer: "Soekarno",
+        },
+        {
+          question: "Berapakah jumlah provinsi di Indonesia?",
+          options: ["32", "34", "36", "33"],
+          answer: "34",
+        },
+        {
+          question: "Siapakah Bapak Saya?",
+          options: ["Kamu", "Aku", "Dia", "Bapak Saya"],
+          answer: "Bapak Saya",
+        },
+        {
+          question: "What i should do when i am sad?",
+          options: ["joke", "smoke", "smile", "do nothing"],
+          answer: "smoke",
+        },
+        {
+          question: "what is your name?",
+          options: ["what", "is", "your", "ronald"],
+          answer: "Ronald",
+        },
+        {
+          question: "who is your god ?",
+          options: ["yesus", "krisna angel", "siwa angel", "allah"],
+          answer: "Ronald",
+        },
+        {
+          question: "who is the most handsome in this answer?",
+          options: ["she", "siti", "female", "ronald"],
+          answer: "Ronald",
+        },
+        {
+          question: "What i should do when i confuse?",
+          options: ["Meet with ronald", "do nothing", "silent", "sleep"],
+          answer: "Ronald",
+        },
+        {
+          question: "Why ronal is the popular answer in these question ?",
+          options: ["Because ronald is the editor of this game", "ronald", "ronal", "ronald"],
+          answer: "Because ronald is the editor of this game",
+        },
+        {
+          question: "What is the meaning from soy bean cake ?",
+          options: ["Tempe", "tahu", "Jihu", "ronald"],
+          answer: "Tempe",
+        },
+        {
+          question: "What is the meaning from soy bean cake ?",
+          options: ["Tempe", "tahu", "Jihu", "ronald"],
+          answer: "Tempe",
+        },
+      ];
+
+      let currentQuestion = 0;
+      let score = 0;
+
+      // Tampilkan pertanyaan dan opsi jawaban
+      function showQuestion() {
+        const question = questions[currentQuestion];
+
+        // Tampilkan pertanyaan
+        const quizContainer = document.getElementById("quiz-container");
+        quizContainer.innerHTML = `
+          <h2 style=" border-radius: 0.5rem; transition: 3s linear;  border: 1px solid #101010; margin-right: 50%;  padding-top: 0.5rem; padding-left: 0.5rem; padding-bottom: 0.5rem;">${question.question}</h2>
+          <ul style=" border-radius: 0.5rem; border: 1px solid blue; margin-right: 85%; margin-left: 1rem;" >
+            <li class="option" style="border-radius: 0.5rem; color: white; background-color: red; cursor: pointer;  border: 1px solid #fff; margin-top: 4rem margin-right: 50%; padding-top: 0.5rem; padding-left: 0.5rem; padding-bottom: 0.5rem;">${question.options[0]}</li>
+            <li class="option" style="border-radius: 0.5rem; color: white; background-color: red; cursor: pointer; border: 1px solid #fff; margin-top: 4rem margin-right: 50%; padding-top: 0.5rem; padding-left: 0.5rem; padding-bottom: 0.5rem;">${question.options[1]}</li>
+            <li class="option" style="border-radius: 0.5rem; color: red; background-color: white; cursor: pointer; border: 1px solid red; margin-top: 4rem margin-right: 50%; padding-top: 0.5rem; padding-left: 0.5rem; padding-bottom: 0.5rem;">${question.options[2]}</li>
+            <li class="option" style="border-radius: 0.5rem; color: red; background-color: white; cursor: pointer; border: 1px solid red; margin-top: 4rem margin-right: 50%; padding-top: 0.5rem; padding-left: 0.5rem; padding-bottom: 0.5rem;">${question.options[3]}</li>
+          </ul>
+        `;
+
+        // Tambahkan event listener untuk opsi jawaban
+        const options = document.querySelectorAll(".option");
+        options.forEach(function (option) {
+          option.addEventListener("click", function () {
+            // Tangani pilihan pengguna
+            if (option.innerHTML === question.answer) {
+              score++;
+            }
+            // Pindah ke pertanyaan berikutnya
+            currentQuestion++;
+            if (currentQuestion < questions.length) {
+              showQuestion();
+            } else { 
+              // Tampilkan hasil akhir
+              const quizContainer = document.getElementById("quiz-container");
+              quizContainer.innerHTML = `
+                  <h2>Selesai!</h2>
+                  <p>Skor: </p>
+                `;
+            }
+          });
+        });
+      }
+
+      // Mulai quiz
+      showQuestion();
+    </script>
+  </body>
+</html>
